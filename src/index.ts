@@ -16,7 +16,7 @@ yargs
     .command({
         command: "watch",
         aliases: ["w"],
-        describe: "Watch and apply changes in SQL files specified in the path flag",
+        describe: "Watch and apply changes in SQL files",
         builder: (yargs) => {
             return yargs.option('db', {
                 describe: "URL to access PostgreSQL database",
