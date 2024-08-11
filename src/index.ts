@@ -1,4 +1,5 @@
 import yargs from 'yargs';
+import {  watchSqlFileChanges } from './watch'
 
 yargs
     .usage("Usage: $0 <command> [options]")
@@ -10,12 +11,12 @@ yargs
         alias: "p",
         describe: "The path/folder containing SQL files",
         type: 'string',
-        default: ".",
+        default: "postgresql://postgres:postgres@127.0.0.1:54322/postgres",
     })
     .command({
         command: "watch",
         aliases: ["w"],
-        describe: "Watch and apply changes in SQL files specified in the path flag",
+        describe: "Watch and apply changes in SQL files",
         builder: (yargs) => {
             return yargs.option('db', {
                 describe: "URL to access PostgreSQL database",
@@ -23,9 +24,11 @@ yargs
                 demandOption: true,
             });
         },
-        handler: (argv) => {
-            const { path, db } = argv;
-            console.log(`Watching SQL files in ${path} and applying changes to ${db}`);
+        handler: async (argv) => {
+          const {path, db:dbUrl} = argv
+          await watchSqlFileChanges(path, dbUrl)
+
+          
         },
     })
     .demandCommand()
