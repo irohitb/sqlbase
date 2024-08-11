@@ -11,7 +11,7 @@ yargs
         alias: "p",
         describe: "The path/folder containing SQL files",
         type: 'string',
-        default: ".",
+        default: "postgresql://postgres:postgres@127.0.0.1:54322/postgres",
     })
     .command({
         command: "watch",
