@@ -3,7 +3,7 @@
   "version": "1.0.6",
   "description": "Keep SQL files in your source tree and sync them to your supabase-managed database",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "ts-node src/index.ts watch --path test --db hello ",
     "start:dev": "nodemon",
     "build": "tsc -p .",
     "prepublish": "tsc"
@@ -11,6 +11,7 @@
   "main": "dist/index.ts",
   "bin": "dist/index.js",
   "types": "dist/index.d.ts",
+  "preferGlobal": true,
   "nodemonConfig": {
     "watch": [
       "src"
