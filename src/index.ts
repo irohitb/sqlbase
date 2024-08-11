@@ -1,4 +1,5 @@
 import yargs from 'yargs';
+import {  watchSqlFileChanges } from './watch'
 
 yargs
     .usage("Usage: $0 <command> [options]")
@@ -23,9 +24,11 @@ yargs
                 demandOption: true,
             });
         },
-        handler: (argv) => {
-            const { path, db } = argv;
-            console.log(`Watching SQL files in ${path} and applying changes to ${db}`);
+        handler: async (argv) => {
+          const {path, db:dbUrl} = argv
+          await watchSqlFileChanges(path, dbUrl)
+
+          
         },
     })
     .demandCommand()

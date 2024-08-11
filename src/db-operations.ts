@@ -1,11 +1,17 @@
 import { promises as fs } from "fs";
 import { Client } from "pg";
 
-const runSqlFile = async (dbUrl:string, sqlPath: string) => {
-    const client =  new Client(dbUrl)
-    const sql = (await fs.readFile(sqlPath)).toString()
-    const result = await client.query(sql);
-    return result
+
+async function getDbClient(dbUrl: string) {
+  const client = new Client(dbUrl);
+  await client.connect();
+  return client;
 }
 
-export default runSqlFile
+async function runSqlFile(db: Client, filePath: string) {
+  const sqlBuffer = await fs.readFile(filePath);
+  const sqlContents = sqlBuffer.toString();
+  return await db.query(sqlContents);
+}
+
+export { getDbClient, runSqlFile };
