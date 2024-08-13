@@ -1,6 +1,5 @@
-import { promises as fs } from "fs";
-import { Client } from "pg";
-
+import { promises as fs } from 'fs';
+import { Client } from 'pg';
 
 async function getDbClient(dbUrl: string) {
   const client = new Client(dbUrl);
