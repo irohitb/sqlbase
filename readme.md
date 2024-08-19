@@ -2,15 +2,17 @@
 
 ### Problem
 
-Supabase is a powerful tool which reduces development time significantly and allows you to generate rest and graphql apis atop of SQL database.
+Supabase is a powerful tool that significantly reduces development time and allows you to generate REST and graphql APIs on top of an SQL database.
 
 Since Supabase doesn't require any driver, the developer workflow for writing SQL code seems lacking and not in sync with your source tree like any other backend code
 
-For example, currently to write sql/postgres function, I would've go outside my IDE and use tools like Supabase Studio, PG Admin etc to write new function, or copy-paste existing function. Besides this being messy, it also makes it very difficult to review the migration if number of changes are significant.
+For example, currently to write sql/postgres function, I would've go outside my IDE and use tools like Supabase Studio, PG Admin etc, for existing functions, I would've copy-paste them from UI of these tools.
 
-To overcome this, sqlbase allows you to checkin your sql files in the source tree (inside folder) and then it watches for changes in SQL files inside this folder. On change sqlbase, would apply these changes directly on the postgres database.
+Besides this being messy, it also makes it very difficult to review the migration if number of changes are significant.
 
-You can also configure Sqlbase to check for modified sql files and generate new migration
+To overcome this, SQLbase allows you to check in your SQL files in the source tree (inside the folder) and then watches for changes in SQL files inside this folder. When you change SQL base, you apply these changes directly to the Postgres database.
+
+You can also configure Sqlbase to check for modified SQL files and generate new migrations.
 
 ## Getting Started
 
